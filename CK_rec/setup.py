@@ -30,7 +30,6 @@ class Setup(object):
                 print(string[:1] + space*4 + string[:1] + space + string[:1] + space*5 + string[:1] + space + string[:1] + space*2 + string[:1] + space*4 + string[:1])
             elif i == 5:
                 print(string[:4] + space + string[:1] + space*2 + string[:1] + space*4 + string[:1] + space*2 + string[:1] + space + string[:4] + space + string[:4])
-            time.sleep(0.2)
 
         print("\nWelcome to the Codeklavier MIDI Recorder!\n")
 
@@ -43,8 +42,9 @@ class Setup(object):
         selected_midiport = -1
         while selected_midiport < 0:
             try:
-                choice = input("Please choose the MIDI device (number) you want to use and hit Enter:")
-                selected_midiport = int(choice)
+                #choice = input("Please choose the MIDI device (number) you want to use and hit Enter:")
+                #selected_midiport = int(choice)
+                selected_midiport = int(1)
                 if selected_midiport < 0 or selected_midiport >= len(self.__ports):
                     print("Invalid number, please try again:")
                     selected_midiport = -1
@@ -87,15 +87,13 @@ class Setup(object):
         self.__midiin.set_callback(cb)
 
     def get_device_id(self):
-        print("Hit any note to get the device_id.")
+        #print("Hit any note to get the device_id.")
         while True:
             msg = self.get_message()
             if msg:
                 message, deltatime = msg
-                if message[0] != 254: #active sense ignore
-                    device_id = message[0]
-                    if device_id:
-                        return device_id
+                device_id = message[0]
+                return device_id
 
     def perform_setup(self):
         self.print_welcome(20)

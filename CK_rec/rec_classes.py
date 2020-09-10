@@ -21,13 +21,16 @@ class CK_rec(object):
         self.__activesense = 0
 
     def prepareTrack(self):
-        input("Press [ENTER] to start recording...")
+        #input("Press [ENTER] to start recording...")
         print("\n**** 📹 You are now RECORDING *****")
         print("(Press Control-C to stop the recording)\n")
         self.__mid.tracks.append(self.__track)
 
     def __call__(self, event, data=None):
         message, deltatime = event
+        if message[0] != 254:
+          self.called=True
+#        print("call",event,data)
         # if message[0] == 254:  #compensate for active sense delta times
         self.__activesense += deltatime
         # else:
