@@ -57,7 +57,7 @@ class Setup(object):
                 print("Sorry, type a valid port numer!")
 
     def open_port(self, pnum):
-        print("You have chosen: ", self.__ports[pnum])
+        #print("You have chosen: ", self.__ports[pnum])
 
         if self.__ports:
             #TODO: do we need to check on the existence of ports?
@@ -96,8 +96,8 @@ class Setup(object):
                 return device_id
 
     def perform_setup(self):
-        self.print_welcome(20)
-        self.show_ports()
+        #self.print_welcome(20)
+        #self.show_ports()
         myPort = self.get_port_from_user()
         return myPort
 
